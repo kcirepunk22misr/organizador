@@ -1,0 +1,9 @@
+.table-responsive::-webkit-scrollbar {
+    width: 8px;
+    height: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    background: #6a4f6b;
+}
