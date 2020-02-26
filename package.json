@@ -22,7 +22,7 @@
     "@fortawesome/fontawesome-free": "^5.8.2",
     "@sweetalert2/ngx-sweetalert2": "^8.0.0",
     "@types/jquery": "^3.3.32",
-    "bootstrap": "^4.2.1",
+    "bootstrap": "^4.3.1",
     "chart.js": "^2.7.3",
     "core-js": "^2.5.4",
     "hamburgers": "^1.1.3",
