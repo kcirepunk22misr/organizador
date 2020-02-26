@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { InventarioService } from '../../services/inventario.service';
+import { Inventary } from '../../interfaces/inventoy.interface';
+
 
 @Component({
   selector: 'app-tables',
@@ -7,10 +10,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TablesComponent implements OnInit {
 
-  constructor() { 
+  public inventorys: Inventary[];
+
+  constructor(private inventoryService: InventarioService) { 
   }
 
   ngOnInit() {
+
+    this.llamar();
+
+  }
+
+  llamar() {
+    this.inventoryService.getInventorys().subscribe((resp: any) => {
+      this.inventorys = resp.inventaios;
+    },
+    err => {
+      console.log(err);
+    });
+  }
+
+  actualizar() {
+    this.llamar();
   }
 
 }

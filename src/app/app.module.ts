@@ -7,6 +7,8 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -18,6 +20,14 @@ import { FormsComponent } from './pages/forms/forms.component';
 import { TypographyComponent } from './pages/typography/typography.component';
 import { MapsComponent } from './pages/maps/maps.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
+
+import { environment } from '../environments/environment';
+// Socket
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+const config: SocketIoConfig = { 
+  url: environment.wsUrl, 
+  options: {} 
+};
 
 import * as $ from 'jquery';
 
@@ -38,9 +48,12 @@ import * as $ from 'jquery';
     BrowserModule,
     AppRoutingModule,
     CommonModule,
+    FormsModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     CollapseModule.forRoot(),
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    SocketIoModule.forRoot(config)
     ],
   providers: [],
   bootstrap: [AppComponent]
