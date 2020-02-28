@@ -6,6 +6,7 @@ import { FormsComponent } from './pages/forms/forms.component';
 import { TypographyComponent } from './pages/typography/typography.component';
 import { MapsComponent } from './pages/maps/maps.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
+import { ModalComponent } from './pages/modal/modal.component';
 
 const routes: Routes = [
   {path: '',   redirectTo: '/dashboard', pathMatch: 'full'},
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path: 'tables', component: TablesComponent},
   {path: 'typography', component: TypographyComponent},
   {path: 'maps', component: MapsComponent},
-  {path: 'notifications', component: NotificationsComponent}
+  {path: 'notifications', component: NotificationsComponent},
+  {path: 'modal', component: ModalComponent}
 ];
 
 @NgModule({

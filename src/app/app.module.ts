@@ -30,6 +30,7 @@ const config: SocketIoConfig = {
 };
 
 import * as $ from 'jquery';
+import { ModalComponent } from './pages/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import * as $ from 'jquery';
     FormsComponent,
     TypographyComponent,
     MapsComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { InventarioService } from '../../services/inventario.service';
 import { Inventary } from '../../interfaces/inventoy.interface';
 
@@ -11,6 +11,7 @@ import { Inventary } from '../../interfaces/inventoy.interface';
 export class TablesComponent implements OnInit {
 
   public inventorys: Inventary[];
+  @Input() informes: string = "bbcitq";
 
   constructor(private inventoryService: InventarioService) { 
   }
@@ -18,8 +19,9 @@ export class TablesComponent implements OnInit {
   ngOnInit() {
 
     this.llamar();
-
+    console.log(this.informes);
   }
+
 
   llamar() {
     this.inventoryService.getInventorys().subscribe((resp: any) => {
