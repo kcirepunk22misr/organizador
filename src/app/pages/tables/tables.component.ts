@@ -10,16 +10,16 @@ import { Inventary } from '../../interfaces/inventoy.interface';
 })
 export class TablesComponent implements OnInit {
 
+  public url: string;
   public inventorys: Inventary[];
-  @Input() informes: string = "bbcitq";
 
   constructor(private inventoryService: InventarioService) { 
+    this.url = "http://localhost:3000/image/inventory/";
   }
 
   ngOnInit() {
 
     this.llamar();
-    console.log(this.informes);
   }
 
 

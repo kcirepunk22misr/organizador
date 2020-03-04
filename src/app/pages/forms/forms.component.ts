@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HerramientasService } from '../../services/herramientas.service';
 import { Property } from 'src/app/interfaces/Property.interfaces';
 import { NgForm } from '@angular/forms';
@@ -28,6 +28,8 @@ export class FormsComponent implements OnInit {
   public inventario: Inv;
   public filesToUpload: Array<File>;
 
+  tipo;
+
   constructor(
     private herramientaService: HerramientasService,
     private inventarioService: InventarioService
@@ -47,16 +49,26 @@ export class FormsComponent implements OnInit {
     this.getUbicacion();
   }
 
+  OnDestroy() {
+    
+  }
+
   fileChangeEvent(fileInput: any ) {
     this.filesToUpload = <Array<File>>fileInput.target.files;
   }
 
 
   getTypes() {
-    this.herramientaService.getProperty('types')
+    return this.herramientaService.getProperty('types')
         .subscribe((resp: any) => {
           this.types = resp.types;
         });
+  }
+
+  prueba() {
+    setInterval(() => {
+      console.log('bbcita');
+    },1000);
   }
 
   getGroups() {
@@ -84,7 +96,6 @@ export class FormsComponent implements OnInit {
     this.herramientaService.getUbicaciones()
         .subscribe((resp: any) => {
           this.ubicaciones = resp.locacions;
-          console.log(this.ubicaciones);
         });
   }
 

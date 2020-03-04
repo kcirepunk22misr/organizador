@@ -7,7 +7,7 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -51,6 +51,7 @@ import { ModalComponent } from './pages/modal/modal.component';
     AppRoutingModule,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule
     HttpClientModule,
     BrowserAnimationsModule,
     CollapseModule.forRoot(),
