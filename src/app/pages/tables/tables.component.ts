@@ -22,6 +22,9 @@ export class TablesComponent implements OnInit {
     this.llamar();
   }
 
+  stringSpace(name: string) {
+    return name.split(' ').join('');
+  }
 
   llamar() {
     this.inventoryService.getInventorys().subscribe((resp: any) => {

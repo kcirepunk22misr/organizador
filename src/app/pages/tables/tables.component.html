@@ -18,8 +18,11 @@
                                     <th scope="col">Grupo</th>
                                     <th scope="col">Tipo</th>
                                     <th scope="col">Marca</th>
+                                    <th scope="col">Color</th>
+                                    <th scope="col">Tamaño</th>
                                     <th scope="col">Ubicacion</th>
                                     <th scope="col">Fecha de ingreso</th>
+                                    <th scope="col">Estado</th>
                                     <th scope="col">Informes</th>
                                     <th scope="col">Imagen</th>
                                     <th scope="col">Cantidad</th>
@@ -34,38 +37,16 @@
                                         <td>{{inventaio.group}}</td>
                                         <td>{{inventaio.type}}</td>
                                         <td>{{inventaio.marca}}</td>
+                                        <td>{{inventaio.color}}</td>
+                                        <td>{{inventaio.size}}</td>
                                         <td>{{inventaio.location}}</td>
                                         <td>{{inventaio.createdAt}}</td>
+                                        <td>{{inventaio.state}}</td>
                                         <td>
-
-                                            <app-modal></app-modal>
-
+                                            <app-modal [reportes]="inventaio.img" [identificador]="inventaio._id" [name]="stringSpace(inventaio.name)"></app-modal>
                                         </td>
                                         <td>
-                                            <img src="http://localhost:3000/inventory/image/{{inventaio.img}}" *ngIf="inventaio.img" width="60" class="img-fluid">
-                                            <!-- Button trigger modal -->
-                                            <!-- <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#imgInventario">
-                                            <i class="fas fa-image "></i>    
-                                        </button> -->
-
-                                            <!-- Modal -->
-                                            <!-- <div class="modal fade" id="imgInventario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">{{inventaio.name}}</h5>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <img src="http://localhost:3000/inventory/image/{{inventaio.img}}" *ngIf="inventaio.img" class="img-fluid">
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> -->
+                                            <app-model-img [img]="inventaio.img" [name]="stringSpace(inventaio.name)"></app-model-img>
                                         </td>
                                         <td>{{inventaio.quantify}}</td>
                                         <td>

@@ -31,6 +31,7 @@ const config: SocketIoConfig = {
 
 import * as $ from 'jquery';
 import { ModalComponent } from './pages/modal/modal.component';
+import { ModelImgComponent } from './pages/model-img/model-img.component';
 
 @NgModule({
   declarations: [
@@ -44,14 +45,15 @@ import { ModalComponent } from './pages/modal/modal.component';
     TypographyComponent,
     MapsComponent,
     NotificationsComponent,
-    ModalComponent
+    ModalComponent,
+    ModelImgComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     CollapseModule.forRoot(),

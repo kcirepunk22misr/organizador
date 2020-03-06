@@ -18,6 +18,16 @@ $hamburger-hover-opacity: 0.7 !default;
     width: 100%;
 }
 
+.text-areak {
+    min-height: 50px;
+    max-height: 300px;
+}
+
+.modal-content {
+    max-height: 500px;
+    overflow-y: scroll;
+}
+
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~@fortawesome/fontawesome-free/scss/regular';

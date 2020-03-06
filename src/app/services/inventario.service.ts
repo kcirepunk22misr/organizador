@@ -40,7 +40,7 @@ export class InventarioService {
     });
   }
 
-  createdInventory(inventory: Inventario) {
+  createdInventory(inventory) {
     return this.http.post(`${this.url}/inventory/add-inventory`, inventory);
   }
 

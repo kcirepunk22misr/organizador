@@ -2,7 +2,7 @@
 
     <h4 class="mb-4 text-muted">Registrar Herramienta</h4>
 
-    <form #forma="ngForm" autocomplete="off" class="row" (ngSubmit)="guardar(forma)">
+    <form autocomplete="off" class="row" [formGroup]="forma" (ngSubmit)="save()">
         <div class="col-md-12 col-lg-6 mb-4 align-items-stretch">
             <div class="card border-0 rounded-0 h-100">
                 <div class="card-title mb-1 p-3">
@@ -13,15 +13,15 @@
                     <div class="form-group row">
                         <label for="nombre" class="col-sm-2 col-form-label text-nowrap">Nombre</label>
                         <div class="col-sm-10">
-                            <input [class.is-invalid]="nombre.invalid && nombre.touched" #nombre="ngModel" type="text" name="name" [(ngModel)]="inventario.name" class="form-control rounded-0" id="nombre" required placeholder="Nombre">
-                            <small class="form-text text-danger" *ngIf="nombre.invalid && nombre.touched">El campo nombre es obligatorio</small>
+                            <input [class.is-invalid]="validar('name')" type="text" name="name" formControlName="name" class="form-control rounded-0" id="nombre" required placeholder="Nombre">
+                            <small *ngIf="validar('name')" class="text-danger">El campo es necesario</small>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label text-nowrap" for="tipo">Grupo</label>
                         <div class="col-sm-10">
-                            <select name="group" #group="ngModel" [(ngModel)]="inventario.group" required class="custom-select" id="tipo">
+                            <select formControlName="group" class="custom-select" id="tipo">
                                 <option selected disabled>Seleccionar el tipo</option>
                                 <option [value]="gruop.name" *ngFor="let gruop of groups">{{gruop.name}}</option>
                             </select>
@@ -30,7 +30,7 @@
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label text-nowrap" for="tipo">Tipo</label>
                         <div class="col-sm-10">
-                            <select #type="ngModel" name="type" [(ngModel)]="inventario.type" required class="custom-select" id="tipo">
+                            <select formControlName="type" class="custom-select" id="tipo">
                                 <option selected disabled>Seleccionar el tipo</option>
                                 <option [value]="type.name" *ngFor="let type of types">{{type.name}}</option>
                             </select>
@@ -39,7 +39,7 @@
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label text-nowrap" for="grupo">Marca</label>
                         <div class="col-sm-10">
-                            <select #marca="ngModel" name="marca" [(ngModel)]="inventario.marca" required class="custom-select" id="grupo">
+                            <select formControlName="marca" class="custom-select" id="grupo">
                                     <option selected disabled>Selecionar Marca</option>
                                     <option [value]="marca.name" *ngFor="let marca of marcas">{{marca.name}}</option>
                                   </select>
@@ -48,25 +48,25 @@
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label text-nowrap" for="grupo">Tamaño</label>
                         <div class="col-sm-10">
-                            <select #marca="ngModel" name="marca" [(ngModel)]="inventario.marca" required class="custom-select" id="grupo">
-                                    <option selected disabled>Selecionar Marca</option>
-                                    <option [value]="marca.name" *ngFor="let marca of marcas">{{marca.name}}</option>
+                            <select formControlName="size" class="custom-select" id="grupo">
+                                    <option selected disabled>Selecionar Tamaño</option>
+                                    <option [value]="size.name" *ngFor="let size of sizes">{{size.name}}</option>
                                   </select>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label text-nowrap" for="grupo">Color</label>
                         <div class="col-sm-10">
-                            <select #marca="ngModel" name="marca" [(ngModel)]="inventario.marca" required class="custom-select" id="grupo">
-                                    <option selected disabled>Selecionar Marca</option>
-                                    <option [value]="marca.name" *ngFor="let marca of marcas">{{marca.name}}</option>
+                            <select formControlName="color" class="custom-select" id="grupo">
+                                    <option selected disabled>Selecionar Color</option>
+                                    <option [value]="color.name" *ngFor="let color of colors">{{color.name}}</option>
                                   </select>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label text-nowrap" for="ubicacion">Ubicacion</label>
                         <div class="col-sm-4">
-                            <select #location="ngModel" name="location" required [(ngModel)]="inventario.location" class="custom-select" id="ubicacion">
+                            <select formControlName="location" class="custom-select" id="ubicacion">
                                     <option selected disabled>Seleccionar Escaparate</option>
                                     <option [value]="ubicacione.container" *ngFor="let ubicacione of ubicaciones">{{ubicacione.container}}</option>
                                   </select>
@@ -74,14 +74,14 @@
 
                         <div class="col-sm-3">
                             <select class="custom-select" id="ubicacion">
-                                    <option selected disabled>Seleccionar Columna</option>
+                                    <option disabled>Seleccionar Columna</option>
                                     <option [value]="ubicacione.place" *ngFor="let ubicacione of ubicaciones">{{ubicacione.place}}</option>
                                   </select>
                         </div>
 
                         <div class="col-sm-3">
                             <select class="custom-select" id="ubicacion">
-                                    <option selected disabled>Seleccionar Lote</option>
+                                    <option disabled>Seleccionar Lote</option>
                                     <option [value]="ubicacione.lote" *ngFor="let ubicacione of ubicaciones">{{ubicacione.lote}}</option>
                                   </select>
                         </div>
@@ -98,7 +98,7 @@
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label text-nowrap" for="tipo">Estado</label>
                         <div class="col-sm-10">
-                            <select #state="ngModel" name="state" [(ngModel)]="inventario.state" required class="custom-select" id="tipo">
+                            <select formControlName="state" class="custom-select" id="tipo">
                                 <option selected disabled>Selecciona El Estado</option>
                                 <option [value]="state.name" *ngFor="let state of states">{{state.name}}</option>
                             </select>
@@ -114,7 +114,7 @@
                                             <i class="fas fa-minus"></i>
                                         </button>
                                 </div>
-                                <input #quantify="ngModel" name="quantify" [(ngModel)]="inventario.quantify" required type="number" class="form-control text-center" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                                <input type="number" class="form-control text-center" formControlName="quantify" aria-label="Example text with button addon" aria-describedby="button-addon1">
                                 <div class="input-group-prepend">
                                     <button (click)="sumar(1)" class="btn btn-outline-secondary" type="button" id="button-addon1">
                                             <i class="fas fa-plus"></i>
